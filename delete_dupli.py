@@ -72,7 +72,7 @@ def delete_duplicate(dir_name):
 def send_mail(dir_name,to_mail_id):
     return_value=delete_duplicate(dir_name)
     t1 = return_value.replace(".", ":")
-    t2 = t1.replace("_", " ") #to recovert the time to original format
+    t2 = t1.replace("_", " ") #to reconvert the time to original format
 
     fromaddr = "pythonexercise900@gmail.com"
     toaddr = to_mail_id
@@ -145,12 +145,12 @@ def main():
               "sample input in terminal: python delete_dupli.py Dir_name  to_mail_add@gmail.com" )
         exit()
 
-    if len(argv) < 1:
+    if len(argv) < 2:
         print("insuffient arguments. use --h for help")
         exit()
 
     if is_connected()==True:
-        schedule.every(1).hour.do(send_mail(argv[1]))
+        schedule.every(1).hour.do(send_mail(argv[1],argv[2]))
     while True:
         schedule.run_pending()
         time.sleep(2)
